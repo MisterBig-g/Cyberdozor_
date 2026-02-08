@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>КиберДозор</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🛡 КиберДозор</h1>
+  <p>Интерактивный тренажёр по вирусам и защите</p>
+</header>
+
+<main>
+
+<!-- Главная -->
+<section id="home" class="active">
+  <h2>Проверь свою цифровую бдительность!</h2>
+  <button onclick="goTo('trainer')">🚀 Начать тренировку</button>
+  <button onclick="goTo('theory')">📚 Теория</button>
+</section>
+
+<!-- Тренажёр -->
+<section id="trainer">
+  <h2>🎯 Практический тренажёр</h2>
+
+  <!-- 1 -->
+  <div class="task">
+    <h3>1. Найди признаки фишинга</h3>
+    <p>Нажми на подозрительные элементы:</p>
+
+    <div class="mail">
+      <p><b>От:</b>
+        <span class="clickable" onclick="wrongClick()">
+          support@paypaI-security.com
+        </span>
+      </p>
+
+      <p><b>Тема:</b>
+        <span class="clickable" onclick="wrongClick()">
+          Срочно подтвердите аккаунт!
+        </span>
+      </p>
+
+      <p><b>Ссылка:</b>
+        <span class="danger clickable" onclick="correctClick()">
+          paypal-verification.ru
+        </span>
+      </p>
+    </div>
+
+    <p id="phishResult"></p>
+  </div>
+
+  <!-- 2 -->
+  <div class="task">
+    <h3>2. Где безопасно скачать программу?</h3>
+
+    <button onclick="downloadChoice(false)">FreeSoft-download.ru</button>
+    <button onclick="downloadChoice(true)">Официальный сайт разработчика</button>
+    <button onclick="downloadChoice(false)">Торрент-трекер</button>
+
+    <p id="downloadResult"></p>
+  </div>
+
+  <!-- 3 -->
+  <div class="task">
+    <h3>3. Проверка пароля</h3>
+    <input type="text" id="passwordInput"
+           placeholder="Введите пароль"
+           oninput="checkPassword()">
+    <p id="passwordStrength"></p>
+  </div>
+
+  <!-- 4 -->
+  <div class="task">
+    <h3>4. Опасное вложение</h3>
+    <p>Файл: <b>photo.exe</b>. Что это?</p>
+
+    <button onclick="fileChoice(false)">Обычная фотография</button>
+    <button onclick="fileChoice(true)">Подозрительный вирусный файл</button>
+
+    <p id="fileResult"></p>
+  </div>
+
+  <!-- 5 -->
+  <div class="task">
+    <h3>5. Сообщение мошенника</h3>
+    <p>Друг пишет: «Срочно отправь код из SMS!»</p>
+
+    <button onclick="smsChoice(false)">Отправить код</button>
+    <button onclick="smsChoice(true)">Не отправлять</button>
+
+    <p id="smsResult"></p>
+  </div>
+
+  <!-- 6 -->
+  <div class="task">
+    <h3>6. Найденная флешка</h3>
+    <p>Ты нашёл флешку в школе. Что безопаснее?</p>
+
+    <button onclick="usbChoice(false)">Открыть сразу</button>
+    <button onclick="usbChoice(true)">Проверить антивирусом</button>
+
+    <p id="usbResult"></p>
+  </div>
+
+  <button onclick="goTo('quiz')">➡ Перейти к тесту</button>
+</section>
+
+<!-- Тест -->
+<section id="quiz">
+  <h2>🧩 Итоговый тест</h2>
+  <div id="quizBox"></div>
+  <button onclick="finishQuiz()">🏁 Завершить</button>
+</section>
+
+<!-- Теория -->
+<section id="theory">
+  <h2>📚 Теория-шпаргалка</h2>
+
+  <div class="cards">
+    <div class="card"><h3>Фишинг</h3><p>Поддельные письма и сайты для кражи данных.</p></div>
+    <div class="card"><h3>Трояны</h3><p>Маскируются под полезные программы.</p></div>
+    <div class="card"><h3>Черви</h3><p>Распространяются сами через сеть.</p></div>
+    <div class="card"><h3>Шифровальщики</h3><p>Шифруют файлы и требуют выкуп.</p></div>
+    <div class="card"><h3>Защита</h3><p>Антивирус + обновления + осторожность.</p></div>
+  </div>
+
+  <button onclick="goTo('home')">⬅ Назад</button>
+</section>
+
+<!-- Результат -->
+<section id="result">
+  <h2>📌 Результат</h2>
+  <p id="finalText"></p>
+  <p id="finalTip"></p>
+  <button onclick="restart()">🔄 Пройти снова</button>
+</section>
+
+</main>
+
+<footer>
+  <p>Проект 10 класс • 2026</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
